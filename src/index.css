@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --border-color: #ec4899;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+
+/* Text border utility for readability on images */
+.text-border {
+  text-shadow:
+    -1px -1px 0 var(--border-color),
+     1px -1px 0 var(--border-color),
+    -1px  1px 0 var(--border-color),
+     1px  1px 0 var(--border-color),
+     0    -1px 0 var(--border-color),
+     0     1px 0 var(--border-color),
+    -1px  0    0 var(--border-color),
+     1px  0    0 var(--border-color);
+}
+
+.text-border-thin {
+  text-shadow:
+    -0.5px -0.5px 0 var(--border-color),
+     0.5px -0.5px 0 var(--border-color),
+    -0.5px  0.5px 0 var(--border-color),
+     0.5px  0.5px 0 var(--border-color);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #ec4899; border-radius: 4px; }
+.light-mode ::-webkit-scrollbar-track { background: #e5e5e5; }
+
+/* Blur effect for locked drops */
+.drop-blur {
+  filter: blur(12px);
+  transition: filter 0.8s ease;
+}
+.drop-blur.unlocked {
+  filter: blur(0px);
+}
+
+/* Processing overlay */
+.processing-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.85);
+}
+
+/* No "Made in Bolt" - hide completely */
+a[href*="bolt"], [class*="bolt-badge"], [data-bolt], [class*="made-in-bolt"], [class*="bolt-badge"], .bolt-badge, #bolt-badge { display: none !important; }
+a[aria-label*="bolt" i], button[aria-label*="bolt" i] { display: none !important; }
+
+/* Product card hover */
+.product-card img { transition: transform 0.4s ease; }
+.product-card:hover img { transform: scale(1.05); }
+
+/* Smooth page transitions */
+.page-enter { opacity: 0; }
+.page-enter-active { opacity: 1; transition: opacity 0.2s ease; }
+
+/* Admin scroll fix */
+.admin-scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
